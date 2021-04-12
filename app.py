@@ -2,6 +2,12 @@ from flask import Flask
 from flask_restful import Api
 from flask_migrate import Migrate
 from models.db import db
+from models.user import User
+from models.post import Post
+from models.game import Game
+from resources.auth import Login, Register
+from resources.post import Posts, SinglePost
+from resources.game import Games, SingleGame
 from flask_cors import CORS
 app = Flask(__name__)
 cors = CORS(app)
@@ -14,6 +20,15 @@ app.config['SQLALCHEMY_ECHO'] = True
 
 db.init_app(app)
 migrate = Migrate(app,db)
+
+api.add_resource(Login, '/auth/login')
+api.add_resource(Register, '/auth/register')
+
+api.add_resource(Posts, '/posts')
+api.add resource(SinglePost 'posts/<int:id>')
+
+api.add_resource(Games, '/games')
+api.add_resource(SingleGame, '/games/<int:id>')
 
 
 if __name__ == '__main__':
