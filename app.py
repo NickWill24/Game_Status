@@ -25,7 +25,7 @@ api.add_resource(Login, '/auth/login')
 api.add_resource(Register, '/auth/register')
 
 api.add_resource(Posts, '/posts')
-api.add resource(SinglePost 'posts/<int:id>')
+api.add_resource(SinglePost, '/posts/<int:id>')
 
 api.add_resource(Games, '/games')
 api.add_resource(SingleGame, '/games/<int:id>')

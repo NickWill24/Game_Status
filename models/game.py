@@ -9,7 +9,7 @@ class Game(db.Model):
     name= db.Column(db.String(80))
     rating = db.Column(db.Integer)
     category = db.Column(db.String(225))
-    esrb_rating = db.Column(db.Sting(225))
+    esrb_rating = db.Column(db.String(225))
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False, onupdate=datetime.now())
 

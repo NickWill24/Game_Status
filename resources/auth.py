@@ -3,18 +3,19 @@ from flask import request
 from models.user import User
 from middleware import create_token, gen_password, strip_token, read_token, compare_password
 
+
 class Login(Resource):
     def post(self):
         data = request.get_data()
         user = User.find_one(data['email'])
-        if user and compare_password(data['password'],user.password_digest):
+        if user and compare_password(data['password'], user.password_digest):
             payload = {
                 "id": user.id,
-                "name":user.name
+                "name": user.name
             }
             token = create_token(payload)
-            return {"token": token, "payload"}
-        return {"msg": "Unauthorized"}, 404 
+            return {"token": token,"payload": payload}
+        return {"msg": "Unauthorized"}, 404
 
     def get(self):
         token = strip_token(request)
@@ -26,12 +27,12 @@ class Login(Resource):
 
 class Register(Resource):
     def post(self):
-        data= request.get_json()
-        params= {
-            "name":data['name'],
-            "email":data['email'],
+        data = request.get_json()
+        params = {
+            "name": data['name'],
+            "email": data['email'],
             "password_digest": gen_password(data['password'])
         }
         user = User(**params)
         user.create
-        return user.json(),201
+        return user.json(), 201
