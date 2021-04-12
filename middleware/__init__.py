@@ -24,3 +24,7 @@ def read_token(token):
 
 def gen_password(password):
     return bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
+
+
+def compare_password(password, hashed_password):
+    return bcrypt.checkpw(password.encode(), hashed_password.encode())
