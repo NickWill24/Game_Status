@@ -11,18 +11,18 @@ class Posts(Resource):
 
     def post(self):
         data = request.get_json()
-        post = post(**data)
-        idea.create()
+        post = Post(**data)
+        post.create()
         return post.json(),201
 
 
 class SinglePost(Resource):
     def get(self, id):
             post= Post.find_by_id(id)
-            return idea.json()
+            return post.json()
 
     def delete(self, id):
-        idea = Post.find_by_id(id)
+        post = Post.find_by_id(id)
         db.session.delete(post)
         db.session.commit()
         return{"msg": 'Post deleted', 'payload': post.id}
