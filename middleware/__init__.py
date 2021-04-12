@@ -20,3 +20,7 @@ def read_token(token):
         return "Signature Invalid"
     except jwt.InvalidTokenError:
         return "Token Invalid"
+
+
+def gen_password(password):
+    return bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
