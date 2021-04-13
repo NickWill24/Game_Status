@@ -11,3 +11,13 @@ export const getPosts = () => async (dispatch) => {
     })
     } catch (error) {}
 }
+
+export const getPost = (id) => async (dispatch) => {
+    try {
+    const posts = await GetPost(id)
+    dispatch({
+        type: GET_POST,
+        payload: posts
+    })
+    } catch (error) {}
+}
