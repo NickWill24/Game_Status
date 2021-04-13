@@ -8,11 +8,11 @@ const iState = {
 const GameReducer = (state = iState, action) => {
     switch (action.type) {
     case GET_GAMES:
-        return { ...state, games: action.payload }
+        return {...state, games: action.payload }
     case GET_GAME:
         return{...state, games: action.payload}
     default:
-        return { ...state }
+        return {...state}
     }
 }
 export default GameReducer
