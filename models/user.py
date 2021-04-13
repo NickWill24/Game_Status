@@ -9,7 +9,7 @@ class User(db.Model):
     email = db.Column(db.String(225))
     password_digest = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
-    updated_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False, onupdate=datetime.now())
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False, onupdate=datetime.utcnow)
 
 
     def __init__(self,name, email, password_digest ):
@@ -22,7 +22,7 @@ class User(db.Model):
         return {"id": self.id,
                 "name": self.name,
                 "email":self.email,
-                "description": self.password_digest,
+                "password_digest": self.password_digest,
                 "created_at": str(self.created_at),
                 "updated_at": str(self.updated_at)}
 
