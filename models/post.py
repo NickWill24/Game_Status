@@ -26,7 +26,11 @@ class Post(db.Model):
         db.session.commit()
         return self.json()
 
+
     @classmethod
-    def find_one(cls, comments):
-        post = Post.query.filter_by(comments=comments).first()
-        return post
+    def find_all(cls):
+        return Post.query.all()
+
+    @classmethod
+    def find_by_id(cls, id):
+        return Post.query.filter_by(id=id).first()
