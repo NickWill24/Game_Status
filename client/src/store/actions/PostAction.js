@@ -21,3 +21,12 @@ export const getPost = (id) => async (dispatch) => {
     })
     } catch (error) {}
 }
+
+export const CreatePost = async (formValues) => {
+    try {
+    const res = await Client.post('/posts', formValues)
+    return res
+    } catch (error) {
+    throw error
+    }
+}
