@@ -42,3 +42,15 @@ export const deletePost = (id) => async (dispatch) => {
     throw error
     }
 }
+
+export const updatePost = (id) => async (dispatch) => {
+    try {
+    const post = await UpdatePost(id)
+    dispatch({
+        type: UPDATE_POST,
+        payload: id
+    })
+    } catch (error) {
+    throw error
+    }
+}
