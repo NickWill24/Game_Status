@@ -13,7 +13,7 @@ class Games(Resource):
         data = request.get_json()
         game = Game(**data)
         game.create()
-        return post.json(),201
+        return game.json(),201
 
 
 class SingleGame(Resource):
@@ -28,9 +28,9 @@ class SingleGame(Resource):
         return{"msg": 'Game deleted', 'payload': game.id}
 
     def put(self, id):
-        post = Game.find_by_id(id)
+        game = Game.find_by_id(id)
         data = request.get_json()
         for key in data:
             setattr(game,key,data[key])
         db.session.commit()
-        return post.json()
+        return game.json()
