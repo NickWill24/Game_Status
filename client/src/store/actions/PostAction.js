@@ -30,3 +30,15 @@ export const CreatePost = async (formValues) => {
     throw error
     }
 }
+
+export const deletePost = (id) => async (dispatch) => {
+    try {
+    const post = await DeletePost(id)
+    dispatch({
+        type: REMOVE_IDEA,
+        payload: id
+    })
+    } catch (error) {
+    throw error
+    }
+}
