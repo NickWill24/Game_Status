@@ -11,8 +11,16 @@ useEffect(
   return (
     <div className="App">
       <h1>Welcome To GameStatus</h1>
+      <form>
+        <input
+        type='type'
+        name='search'
+        placeholder='Search Game'
+        />
+      <button>Submit</button>
+      </form>
       <Switch>
-        <Route exact path='/' component={Game}/>
+        {/* <Route exact path='/' component={Game}/> */}
       </Switch>
     </div>
   );

@@ -5,7 +5,7 @@ const API_KEY= process.env.REACT_APP_RAWG_KEY
 export const GetGames = async () => {
 try {
     const res= await Client.get(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=100`)
-    console.log(res.data)
+    console.log(res.data.results)
 } catch (error) {
     throw error
     }
