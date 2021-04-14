@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import '../src/styles/App.css'
 import {GetGames} from './services/rawgservices'
 import { Route, Switch } from 'react-router-dom'
+import Game from '../src/components/Game'
 
 function App() {
 useEffect(
