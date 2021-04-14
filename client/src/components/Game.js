@@ -1,16 +1,16 @@
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import React, { useEffect } from 'react'
-import { GetGames } from '../services/rawgservices'
+import { getGames } from '../store/actions/GameAction'
 
-const mapStateToProps = ( gameState ) => {
-    return  gameState 
+const mapStateToProps = ({gameState}) => {
+    return  {gameState}
     
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchGames: () => dispatch(GetGames())
+        fetchGames: () => dispatch(getGames())
     }
 }
 
