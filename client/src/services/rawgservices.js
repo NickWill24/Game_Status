@@ -6,16 +6,17 @@ export const GetGames = async () => {
 try {
     const res= await Client.get(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=100`)
     console.log(res.data.results)
+    return res.data.results
 } catch (error) {
     throw error
     }
 }
 
-export const GetGame = async (id) => {
-try {
-    const res = await Client.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
-    console.log(res.data)
-} catch (error) {
-    throw error
-}
-}
+// export const GetGame = async (id) => {
+// try {
+//     const res = await Client.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
+//     console.log(res.data)
+// } catch (error) {
+//     throw error
+// }
+// }

@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import React, { useEffect } from 'react'
 import { GetGames } from '../services/rawgservices'
 
-const mapStateToProps = ({ gameState }) => {
-    return { gameState }
+const mapStateToProps = ( gameState ) => {
+    return  gameState 
     
 }
 
@@ -21,11 +21,11 @@ const Game = (props) => {
     }, [])
     return (
     <div>
-        {/* {props.gameState.games.map((game) => (
+        {props.gameState.games? props.gameState.games.map((game)=>{
             <div key={game.id}>
-                <Link to={`/${game.id}`}><img  src={`https://api.rawg.io/api/games?${result}`}></img></Link>
+                <img src={game.background_image}/>
             </div>
-        ))} */}
+        }):null}
     </div>
     )
 }

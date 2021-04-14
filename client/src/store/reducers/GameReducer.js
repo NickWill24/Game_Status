@@ -2,7 +2,10 @@ const {GET_GAME, GET_GAMES}= require('../types')
 
 const iState = {
     games: [],
-    details:''
+    details:'',
+    searchQuery: '',
+    searchResults: [],
+    searched: false
 }
 
 const GameReducer = (state = iState, action) => {
