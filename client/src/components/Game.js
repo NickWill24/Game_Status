@@ -19,13 +19,15 @@ const Game = (props) => {
         props.fetchGames()
       //eslint-disable-next-line
     }, [])
+    console.log(props.gameState.games)
     return (
     <div>
+        <h1>h1 testing</h1>
         {props.gameState.games? props.gameState.games.map((game)=>{
             <div key={game.id}>
                 <img src={game.background_image}/>
             </div>
-        }):null}
+        }):<h1>no games</h1>}
     </div>
     )
 }
