@@ -1,8 +1,8 @@
 const {GET_GAME, GET_GAMES}= require('../types')
 
 const iState = {
-    games= [],
-    details=''
+    games: [],
+    details:''
 }
 
 const GameReducer = (state = iState, action) => {
