@@ -22,11 +22,13 @@ const Game = (props) => {
     console.log(props.gameState.games)
     return (
     <div>
-        <h1>h1 testing</h1>
+        <h1>Pick a Game to comment About</h1>
         {props.gameState.games? props.gameState.games.map((game)=>{
+            return(
             <div key={game.id}>
                 <img src={game.background_image}/>
-            </div>
+                <p>{game.name}</p>
+            </div>)
         }):<h1>no games</h1>}
     </div>
     )

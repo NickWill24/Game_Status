@@ -3,6 +3,7 @@ import '../src/styles/App.css'
 import {GetGames} from './services/rawgservices'
 import { Route, Switch } from 'react-router-dom'
 import Game from '../src/components/Game'
+import GameDetails from '../src/components/GameDetails'
 
 function App() {
 useEffect(
@@ -21,6 +22,7 @@ useEffect(
       </form>
       <Switch>
         <Route exact path='/' component={Game}/>
+        {/* <Route path="/:id" component={GameDetails}/> */}
       </Switch>
     </div>
   );

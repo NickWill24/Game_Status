@@ -3,9 +3,6 @@ const {GET_GAME, GET_GAMES}= require('../types')
 const iState = {
     games: [],
     details:'',
-    searchQuery: '',
-    searchResults: [],
-    searched: false
 }
 
 const GameReducer = (state = iState, action) => {
@@ -13,7 +10,7 @@ const GameReducer = (state = iState, action) => {
     case GET_GAMES:
         return {...state, games: action.payload }
     case GET_GAME:
-        return{...state, games: action.payload}
+        return{...state, details: action.payload}
     default:
         return {...state}
     }
