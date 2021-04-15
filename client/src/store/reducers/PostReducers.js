@@ -1,7 +1,7 @@
 const { UPDATE_POST, DELETE_POST, CREATE_POST, GET_POSTS, GET_POST} = require('../types')
 
 const iState ={
-    post:'',
+    post:[],
     comment:''
 }
 
@@ -16,7 +16,7 @@ const PostReducer = (state = iState, action) => {
     case DELETE_POST:
         return{...state, post: action.payload}
     case CREATE_POST:
-        return{...state, post: action.payload}
+        return{...state, comment:''}
     default:
         return { ...state }
     }

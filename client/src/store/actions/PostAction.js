@@ -1,5 +1,5 @@
 import {CreatePost, UpdatePost, DeletePost, GetPost, GetPosts} from '../../services/PostService'
-import {UPDATE_POST, DELETE_POST, GET_POSTS, GET_POST} from '../types'
+import {UPDATE_POST, DELETE_POST, GET_POSTS, GET_POST, CREATE_POST} from '../types'
 
 
 export const getPosts = () => async (dispatch) => {
@@ -22,12 +22,15 @@ export const getPost = (id) => async (dispatch) => {
     } catch (error) {}
 }
 
-export const CreatePost = async (formValues) => {
+export const createPost = (formvalues) => async (dispatch) =>{
     try {
-    const res = await Client.post('/posts', formValues)
-    return res
+        const newPost = await CreatePost(formvalues)
+        dispatch({
+            type: CREATE_POST
+        })
+        return newPost
     } catch (error) {
-    throw error
+        throw error
     }
 }
 
