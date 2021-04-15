@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const loginForm = (props) =>{
+const loginForm = () =>{
     
 
     return (

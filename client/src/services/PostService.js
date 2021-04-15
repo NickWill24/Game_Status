@@ -1,9 +1,9 @@
 import Client from './'
-
+import { BASE_URL } from './index'
 
 export const GetPost = async () => {
     try {
-    const res = await Client.get('/posts')
+    const res = await Client.get(`${BASE_URL}/posts`)
     return res.data
     } catch (error) {
     throw error
@@ -12,7 +12,7 @@ export const GetPost = async () => {
 
 export const GetPost = async (id) => {
     try {
-    const res = await Client.get(`/posts/${id}`)
+    const res = await Client.get(`${BASE_URL}/posts/${id}`)
     return res
     } catch (error) {
     throw error
@@ -30,7 +30,7 @@ export const CreatePost = async (formValues) => {
 
 export const DeletePost = async (id) => {
     try {
-    const res = await Client.delete(`/post/${id}`)
+    const res = await Client.delete(`${BASE_URL}/post/${id}`)
     return res
     } catch (error) {
     throw error
@@ -40,7 +40,7 @@ export const DeletePost = async (id) => {
 
 export const UpdatePost = async (id) => {
     try {
-        const res = await Client.put(`/post/${id}`)
+        const res = await Client.put(`${BASE_URL}/post/${id}`)
         return res
     } catch (error) {
         throw error

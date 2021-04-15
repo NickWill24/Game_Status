@@ -4,6 +4,7 @@ import {GetGames} from './services/rawgservices'
 import { NavLink, Route, Switch } from 'react-router-dom'
 import Game from '../src/components/Game'
 import GameDetails from '../src/components/GameDetails'
+import loginForm from '../src/components/LoginForm'
 
 
 function App() {
@@ -17,7 +18,9 @@ useEffect(
           <NavLink to='/'>
             <li>Home</li>
           </NavLink>
-          <li>Login</li>
+          <NavLink to='/loginForm'>
+            <li>Login</li>
+          </NavLink>
           <li>Sign up</li>
         </ul>
       </nav>
@@ -33,6 +36,7 @@ useEffect(
       <Switch>
         <Route exact path='/' component={Game}/>
         <Route path="/:id" component={GameDetails}/>
+        <Route path='/login' component={loginForm}/>
       </Switch>
     </div>
   );
