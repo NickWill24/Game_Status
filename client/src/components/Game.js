@@ -17,7 +17,6 @@ const mapDispatchToProps = (dispatch) => {
 const Game = (props) => {
     useEffect(() => {
         props.fetchGames()
-      //eslint-disable-next-line
     }, [])
     console.log(props.gameState.games)
     return (

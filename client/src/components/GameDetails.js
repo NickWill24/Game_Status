@@ -25,6 +25,16 @@ const Details = (props) => {
         <p>{props.gameState.details.description_raw}</p>
         <p>{props.gameState.details.rating}</p>
         <img src={props.gameState.details.background_image}/>
+        <section>
+                    <form>
+            <input
+            type='type'
+            name='Comment'
+            placeholder='Write a comment'
+            />
+            <button>Post</button>
+        </form>
+        </section>
     </div>
     )
 }
