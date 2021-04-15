@@ -26,7 +26,7 @@ const Game = (props) => {
         {props.gameState.games? props.gameState.games.map((game)=>{
             return(
             <div key={game.id}>
-                <img src={game.background_image}/>
+                <Link to={`/${game.id}`}><img src={game.background_image}/></Link>
                 <p>{game.name}</p>
             </div>)
         }):<h1>no games</h1>}

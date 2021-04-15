@@ -22,7 +22,7 @@ useEffect(
       </form>
       <Switch>
         <Route exact path='/' component={Game}/>
-        {/* <Route path="/:id" component={GameDetails}/> */}
+        <Route path="/:id" component={GameDetails}/>
       </Switch>
     </div>
   );
