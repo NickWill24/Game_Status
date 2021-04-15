@@ -14,7 +14,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const Details = (props) => {
-    // const id = props.match.params.id
     console.log(props.gameState.details.background_image)
     useEffect(() => {
         props.fetchGame(props.match.params.id)
@@ -22,6 +21,9 @@ const Details = (props) => {
     return (
     <div>
         <h1>Details</h1>
+        <p>{props.gameState.details.name}</p>
+        <p>{props.gameState.details.description_raw}</p>
+        <p>{props.gameState.details.rating}</p>
         <img src={props.gameState.details.background_image}/>
     </div>
     )
