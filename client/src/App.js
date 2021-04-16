@@ -1,16 +1,14 @@
 import { useEffect } from 'react';
 import '../src/styles/App.css'
-import {GetGames} from './services/rawgservices'
 import { NavLink, Route, Switch } from 'react-router-dom'
 import Game from '../src/components/Game'
 import GameDetails from '../src/components/GameDetails'
 import loginForm from '../src/components/LoginForm'
+import Form from './components/Form'
 
 
-function App() {
-useEffect(
-  ()=>GetGames()
-)
+const App = () => {
+
   return (
     <div className="App">
       <nav>
@@ -25,18 +23,11 @@ useEffect(
         </ul>
       </nav>
       <h1>Welcome To GameStatus</h1>
-      <form>
-        <input
-        type='type'
-        name='search'
-        placeholder='Search Game'
-        />
-      <button>Submit</button>
-      </form>
+      <Form/>
       <Switch>
         <Route exact path='/' component={Game}/>
-        <Route path="/:id" component={GameDetails}/>
-        <Route path='/login' component={loginForm}/>
+        <Route exact path="/:id" component={GameDetails}/>
+        <Route exact path='/login' component={loginForm}/>
       </Switch>
     </div>
   );

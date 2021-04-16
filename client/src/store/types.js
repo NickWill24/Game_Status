@@ -5,7 +5,7 @@ export const CREATE_POST="CREATE_POST"
 export const DELETE_POST="DELETE_POST"
 
 export const GET_GAMES="GET_GAMES"
-export const GET_GAME="GET_GAME"
+export const GET_ONE_GAME="GET_ONE_GAME"
 
 export const SET_CURRENT_USER='SET_CURRENT_USER'
 export const SET_SELECTED_USER='SET_SELECTED_USER'
@@ -16,3 +16,7 @@ export const SIGNUP_SUBMIT= 'SIGNUP_SUBMIT'
 
 export const LOGIN_FORM='LOGIN_FORM'
 export const RESET_LOGIN='RESET_FORM'
+
+export const SEARCH_GAME="SEARCH_GAME"
+export const CREATE_GAME='CREATE_GAME'
+export const GET_GAME_BLOG="GET_GAME_BLOG"
