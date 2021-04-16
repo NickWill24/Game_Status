@@ -1,5 +1,5 @@
-import Axios from 'axios'
+// import Axios from 'axios'
 
-const Client = Axios.create({ baseURL: 'https://rawg.io/games' })
+// const Client = Axios.create({ baseURL: 'https://rawg.io/games' })
 
-export default Client
+// export default Client

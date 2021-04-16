@@ -10,16 +10,18 @@ class Game(db.Model):
     rating = db.Column(db.Integer)
     category = db.Column(db.String(225))
     esrb_rating = db.Column(db.String(225))
+    rawg_id= db.Column(db.Integer)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False, onupdate=datetime.now())
     posts= db.relationship("Post", cascade='all', backref=db.backref('posts', lazy=True))
 
 
-    def __init__(self, name, rating, category, esrb_rating):
+    def __init__(self, name, rating, category, esrb_rating, rawg_id):
         self.name= name
         self.rating= rating
         self.category = category, 
         self.esrb_rating = esrb_rating
+        self.rawg_id= rawg_id
 
     def json(self):
         return {"id": self.id,
@@ -27,6 +29,7 @@ class Game(db.Model):
                 "rating": self.rating,
                 "category": self.category,
                 "esrb_rating": self.esrb_rating,
+                "rawg_id":self.rawg_id,
                 "created_at": str(self.created_at),
                 "updated_at": str(self.updated_at)}
 
