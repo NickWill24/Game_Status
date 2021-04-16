@@ -11,6 +11,7 @@ class Posts(Resource):
 
     def post(self):
         data = request.get_json()
+        print(data)
         post = Post(**data)
         post.create()
         return post.json(),201
@@ -34,3 +35,9 @@ class SinglePost(Resource):
             setattr(post,key,data[key])
         db.session.commit()
         return post.json()
+
+
+class PostGame(Resource):
+    def get(self, id):
+        post = Post.include_game(id)
+        return post

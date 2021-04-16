@@ -1,6 +1,6 @@
 from models.db import db
 from datetime import datetime
-
+from sqlalchemy.orm import joinedload
 
 
 class Game(db.Model):
@@ -12,6 +12,7 @@ class Game(db.Model):
     esrb_rating = db.Column(db.String(225))
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False, onupdate=datetime.now())
+    posts= db.relationship("Post", cascade='all', backref=db.backref('posts', lazy=True))
 
 
     def __init__(self, name, rating, category, esrb_rating):
@@ -45,3 +46,8 @@ class Game(db.Model):
     def find_by_id(cls, id):
         return Game.query.filter_by(id=id).first()
 
+    @classmethod
+    def include_post(cls, game_id):
+        game = Game.query.options(joinedload('posts')).filter_by(id=game_id).first()
+        posts = [c.json() for c in game.posts]
+        return {**game.json(), "posts":posts}

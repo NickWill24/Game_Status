@@ -34,3 +34,8 @@ class SingleGame(Resource):
             setattr(game,key,data[key])
         db.session.commit()
         return game.json()
+
+class GamePosts(Resource):
+    def get(self, id):
+        game = Game.include_post(id)
+        return game

@@ -26,8 +26,10 @@ export const createPost = (formvalues) => async (dispatch) =>{
     try {
         const newPost = await CreatePost(formvalues)
         dispatch({
-            type: CREATE_POST
+            type: CREATE_POST, 
+            payload: newPost
         })
+        console.log(newPost)
         return newPost
     } catch (error) {
         throw error

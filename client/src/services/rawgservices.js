@@ -21,3 +21,12 @@ try {
     throw error
 }
 }
+
+export const CreateGame = async (formValues) => {
+    try {
+    const res = await Client.post('/games', formValues)
+    return res
+    } catch (error) {
+    throw error
+    }
+}
