@@ -25,3 +25,14 @@ export const getGame = (id) => async (dispatch) =>{
         throw error
     }
 }
+
+// export const getNewGame = (formvalues) => async (dispatch) =>{
+//     try{
+//         const newGame= await 
+//         dispatch({
+//             type: GET_GAME,
+//             payload: formvalues
+//         })
+//     }
+
+// } catch (er)

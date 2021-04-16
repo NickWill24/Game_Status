@@ -3,6 +3,11 @@ import React from 'react'
 
 
 const signup = () => {
+
+//handleChange
+//formSubmit
+//
+
     return(
         <div>
             <h1>Sign up Page</h1>
