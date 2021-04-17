@@ -22,10 +22,10 @@ const Game = (props) => {
     return (
     <div>
         <h1>Pick a Game to comment About</h1>
-        {props.gameState.games? props.gameState.games.map((game)=>{
+        {props.gameState.results? props.gameState.results.map((game, index)=>{
             return(
-            <div key={game.id}>
-                <Link to={`/${game.id}`}><img src={game.background_image}/></Link>
+            <div key={index}>
+                <Link to={`/${game.id}`}><img src={game.background_image} alt='Game cover'/></Link>
                 <p>{game.name}</p>
             </div>)
         }):<h1>no games</h1>}

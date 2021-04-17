@@ -51,6 +51,7 @@ export const createGame = (formvalues) => async (dispatch) =>{
         throw error
     }
 }
+//get Game from Backend 
 export const getGameBlog = (id) => async (dispatch) =>{
     try {
         const gameBlog = await __GetGameBlog(id)

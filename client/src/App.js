@@ -5,6 +5,7 @@ import Game from '../src/components/Game'
 import GameDetails from '../src/components/GameDetails'
 import loginForm from '../src/components/LoginForm'
 import Form from './components/Form'
+import GameBlog from './components/GameBlog'
 
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
         <Route exact path='/' component={Game}/>
         <Route exact path="/:id" component={GameDetails}/>
         <Route exact path='/login' component={loginForm}/>
+        <Route exact path='/games/:id' component={GameBlog}/>
       </Switch>
     </div>
   );
