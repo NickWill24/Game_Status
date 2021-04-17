@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchGameBlog: (id) => dispatch(getGameBlog(id)),
         makePost: (formValue) => dispatch(createPost(formValue)),
-        // removePost: (id) => dispatch(deletePost(id)),
+        removePost: (id) => dispatch(deletePost(id)),
         handleInput: (formValue) => dispatch(handlePost(formValue))
     }
 }
@@ -21,17 +21,28 @@ const mapDispatchToProps = (dispatch) => {
 const GameBlog = (props) => {
 //update when auth works 
     let testUser = 'Mike'
-    console.log(props)
+    console.log(props.gameState.gameblog)
     const handleChange= (e) =>{
         props.handleInput(e.target.value)
     }
-    const handleSubmit = () =>{
+    const handleSubmit = async () =>{
         let myPost= {
             comments:props.postState.comment,
             game_id:props.match.params.id,
             user_name: testUser
         }
-        props.makePost(myPost)
+        await props.makePost(myPost)
+        await props.fetchGameBlog(props.match.params.id)
+        props.handleInput('')
+    }
+    const handleDelete = async (id) =>{
+        console.log('Here', id)
+        try {
+            await props.removePost(id)
+            await props.fetchGameBlog(props.match.params.id)
+        } catch (error) {
+            throw error
+        }
     }
 
     useEffect(() => {
@@ -42,7 +53,6 @@ const GameBlog = (props) => {
     return (
     <div>
         <h1>Game Blog</h1>
-        
             <input
             type='text'
             name="post"
@@ -51,7 +61,16 @@ const GameBlog = (props) => {
             onChange={(e)=>{handleChange(e)}}
             />
             <button onClick={()=>{handleSubmit()}}>Post</button>
-        
+            {props.gameState.gameblog.posts ?
+            <div>
+                {props.gameState.gameblog.posts.map((post, index) =>(
+                    <div key={index}>
+                        <p>{post.user_name}</p>
+                        <p>{post.comments}</p>
+                        <button onClick={()=>handleDelete(post.id)}>X</button>
+                    </div>
+                ))}
+                </div> : null}
     </div>
     )
 }

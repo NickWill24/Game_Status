@@ -29,8 +29,8 @@ export const __CreatePost = async (formValues) => {
 
 export const __DeletePost = async (id) => {
     try {
-    const res = await Client.delete(`/post/${id}`)
-    // return res
+    const res = await Client.delete(`/posts/${id}`)
+    return res
     } catch (error) {
     throw error
     }
