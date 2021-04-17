@@ -4,7 +4,8 @@ const iState ={
     posts:[],
     newPost:{},
     game_id:0,
-    comment:''
+    comment:'',
+    edit:{}
 }
 
 const PostReducer = (state = iState, action) => {
@@ -14,7 +15,7 @@ const PostReducer = (state = iState, action) => {
     case GET_POST:
         return{...state, post: action.payload}
     case UPDATE_POST:
-        return{...state, post: action.payload}
+        return{...state, edit: action.payload}
     case DELETE_POST:
         return{...state, post: action.payload}
     case CREATE_POST:

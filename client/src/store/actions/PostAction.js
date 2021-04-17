@@ -1,12 +1,12 @@
-import {__CreatePost, __UpdatePost, __DeletePost, __GetPost, __GetPosts} from '../../services/PostService'
-import {UPDATE_POST, DELETE_POST, GET_POSTS, GET_POST, CREATE_POST, HANDLE_POST} from '../types'
+import {__CreatePost, __UpdatePost, __DeletePost, __GetPostById, __GetAllPosts} from '../../services/PostService'
+import {UPDATE_POST, DELETE_POST, GET_ALL_POSTS, GET_POST_BY_ID,CREATE_POST, HANDLE_POST} from '../types'
 
 
 export const getPosts = () => async (dispatch) => {
     try {
-    const posts = await __GetPosts()
+    const posts = await __GetAllPosts()
     dispatch({
-        type: GET_POSTS,
+        type: GET_ALL_POSTS,
         payload: posts
     })
     } catch (error) {}
@@ -19,11 +19,11 @@ export const handlePost = (formvalue) => async (dispatch) =>{
     })
 }
 
-export const getPost = (id) => async (dispatch) => {
+export const getPostById = (id) => async (dispatch) => {
     try {
-    const posts = await __GetPost(id)
+    const posts = await __GetPostById(id)
     dispatch({
-        type: GET_POST,
+        type: GET_POST_BY_ID,
         payload: posts
     })
     } catch (error) {}
@@ -55,12 +55,12 @@ export const deletePost = (id) => async (dispatch) => {
     }
 }
 
-export const updatePost = (id) => async (dispatch) => {
+export const updatePost = (formData, id) => async (dispatch) => {
     try {
-    const post = await __UpdatePost(id)
+    const post = await __UpdatePost(formData, id)
     dispatch({
         type: UPDATE_POST,
-        payload: id
+        payload: post
     })
     } catch (error) {
     throw error

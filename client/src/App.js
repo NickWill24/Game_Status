@@ -6,6 +6,7 @@ import GameDetails from '../src/components/GameDetails'
 import loginForm from '../src/components/LoginForm'
 import Form from './components/Form'
 import GameBlog from './components/GameBlog'
+import EditForm from './components/EditForm';
 
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
         <Route exact path="/:id" component={GameDetails}/>
         <Route exact path='/login' component={loginForm}/>
         <Route exact path='/games/:id' component={GameBlog}></Route>
+        <Route exaxt path='/posts/edit/:id' component={EditForm}/>
       </Switch>
     </div>
   );

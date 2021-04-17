@@ -44,6 +44,10 @@ const GameBlog = (props) => {
             throw error
         }
     }
+    const handleEdit = (id) =>{
+        console.log(id)
+        props.history.push(`/posts/edit/${id}`)
+    }
 
     useEffect(() => {
         props.fetchGameBlog(props.match.params.id)
@@ -68,6 +72,7 @@ const GameBlog = (props) => {
                         <p>{post.user_name}</p>
                         <p>{post.comments}</p>
                         <button onClick={()=>handleDelete(post.id)}>X</button>
+                        <button onClick={()=>handleEdit(post.id)}>Edit</button>
                     </div>
                 ))}
                 </div> : null}

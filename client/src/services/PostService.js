@@ -1,6 +1,6 @@
 import Client from './index'
 
-export const __GetPost = async () => {
+export const __GetAllPosts = async () => {
     try {
         const res = await Client.get('/posts')
     return res.data
@@ -9,7 +9,7 @@ export const __GetPost = async () => {
     }
 }
 
-export const __GetPosts = async (id) => {
+export const __GetPostById = async (id) => {
     try {
     const res = await Client.get(`/posts/${id}`)
     return res
@@ -37,10 +37,10 @@ export const __DeletePost = async (id) => {
 }
 
 
-export const __UpdatePost = async (id) => {
+export const __UpdatePost = async (formData, id) => {
     try {
-        const res = await Client.put(`/post/${id}`)
-        // return res
+        const res = await Client.put(`/posts/${id}`, formData)
+        return res.data
     } catch (error) {
         throw error
     }
