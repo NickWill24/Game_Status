@@ -1,8 +1,6 @@
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import React, { useEffect } from 'react'
-import { getGames } from '../store/actions/GameAction'
-import { addRegisterForm } from '../store/actions/AuthAction'
+import { addRegisterForm, register } from '../store/actions/AuthAction'
 
 const mapStateToProps = ({AuthState}) => {
     return  {AuthState}
@@ -11,49 +9,57 @@ const mapStateToProps = ({AuthState}) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        createRegister:(formData) => dispatch(addRegisterForm(formData))
+        createRegister:(name, value) => dispatch(addRegisterForm(name, value)),
+        signUp: (formData) => dispatch(register(formData))
     }
 }
 
-const login = (props) => {
-    useEffect(() => {
-        props.createRegister()
-    }, [])
+const SignUpForm = (props) => {
+    console.log(props.AuthState)
     const handleChange=(event) => {
-        props.AuthState.name(event.target.value)
+        props.createRegister(event.target.name, event.target.value)
+    }
+    const handleSubmit =(e) =>{
+        e.preventDefault()
+        let form= {
+            name: props.AuthState.name, 
+            email: props.AuthState.email,
+            password: props.AuthState.password
+        }
+        props.signUp(form)
     }
     return (
     <div>
-        <h1>Login</h1>
-        <form>
+        <h1>Sign Up</h1>
+        <form onSubmit={handleSubmit}>
             <input
             type='text'
             name='name'
             placeholder='name'
             value={props.AuthState.name}
-            // onChange={}
+            onChange={handleChange}
             />
             <input
             type='text'
             name='email'
             placeholder='email'
             value={props.AuthState.email}
-            // onChange={}
+            onChange={handleChange}
             />
             <input
             type='text'
             placeholder='password'
             name='password'
             value={props.AuthState.password}
-            // onChange={}
+            onChange={handleChange}
             />
-            <button type='submit'>Login</button>
+            <button type='submit'>Register</button>
         </form>
     </div>
     )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)()
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm)
 
 
 

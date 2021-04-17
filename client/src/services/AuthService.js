@@ -16,6 +16,7 @@ export const __SignIn = async (formvalue) => {
     try {
         const res = await Client.post('/auth/login', formvalue)
         localStorage.setItem('token', res.data.token)
+        console.log(res)
         return res
     } catch (error) {
         throw error

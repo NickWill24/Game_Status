@@ -1,35 +1,54 @@
-// import React from 'react'
+import { connect } from 'react-redux'
+import React, { useEffect } from 'react'
+import { addLoginForm, addRegisterForm, login, register } from '../store/actions/AuthAction'
 
+const mapStateToProps = ({AuthState}) => {
+    return  {AuthState}
+    
+}
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createLogin:(name, value) => dispatch(addLoginForm(name, value)),
+        signIn: (formData) => dispatch(login(formData))
+    }
+}
 
-// const signup = () => {
+const LoginForm = (props) => {
+    console.log(props.AuthState)
+    const handleChange=(event) => {
+        props.createLogin(event.target.name, event.target.value)
+    }
+    const handleSubmit =(e) =>{
+        e.preventDefault()
+        let form= { 
+            email: props.AuthState.email,
+            password: props.AuthState.password
+        }
+        props.signIn(form)
+    }
+    return (
+    <div>
+        <h1>Sign In</h1>
+        <form onSubmit={handleSubmit}>
+            <input
+            type='text'
+            name='email'
+            placeholder='email'
+            value={props.AuthState.email}
+            onChange={handleChange}
+            />
+            <input
+            type='text'
+            placeholder='password'
+            name='password'
+            value={props.AuthState.password}
+            onChange={handleChange}
+            />
+            <button type='submit'>Login</button>
+        </form>
+    </div>
+    )
+}
 
-// //handleChange
-// //formSubmit
-// //
-
-//     return(
-//         <div>
-//             <h1>Sign up Page</h1>
-//             <form>
-//                 <input
-//                 type='text'
-//                 name='name'
-//                 placeholder='name'
-//                 />
-//                 <input
-//                 type='text'
-//                 name='email'
-//                 placeholder='email'
-//                 />
-//                 <input
-//                 type='text'
-//                 name='password'
-//                 placeholder='password'
-//                 />
-//             </form>
-//         </div>
-//     )
-// }
-
-// export default signup
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
