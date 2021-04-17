@@ -18,7 +18,6 @@ const Game = (props) => {
     useEffect(() => {
         props.fetchGames()
     }, [])
-    console.log(props.gameState.games)
     return (
     <div>
         <h1>Pick a Game to comment About</h1>

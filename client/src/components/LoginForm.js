@@ -1,30 +1,35 @@
 // import React from 'react'
 
 
-// const loginForm = () =>{
-    
 
-//     return (
+// const signup = () => {
+
+// //handleChange
+// //formSubmit
+// //
+
+//     return(
 //         <div>
-//             <h1>Login Form</h1>
-
+//             <h1>Sign up Page</h1>
 //             <form>
 //                 <input
 //                 type='text'
-//                 name='email'
-//                 // value={name}
-//                 placeholder="XXXXXX@email.com"
+//                 name='name'
+//                 placeholder='name'
 //                 />
 //                 <input
 //                 type='text'
-//                 name="password"
-//                 // value={name}
-//                 placeholder='1234'
+//                 name='email'
+//                 placeholder='email'
 //                 />
-//                 <button>Submit</button>
+//                 <input
+//                 type='text'
+//                 name='password'
+//                 placeholder='password'
+//                 />
 //             </form>
 //         </div>
 //     )
 // }
 
-// export default loginForm
+// export default signup
