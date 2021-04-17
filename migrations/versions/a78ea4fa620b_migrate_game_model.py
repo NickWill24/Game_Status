@@ -1,8 +1,8 @@
-"""assoction game-post
+"""migrate game model
 
-Revision ID: d4676b923f0d
+Revision ID: a78ea4fa620b
 Revises: 
-Create Date: 2021-04-15 22:12:50.660184
+Create Date: 2021-04-17 13:49:28.324874
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'd4676b923f0d'
+revision = 'a78ea4fa620b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -24,6 +24,8 @@ def upgrade():
     sa.Column('rating', sa.Integer(), nullable=True),
     sa.Column('category', sa.String(length=225), nullable=True),
     sa.Column('esrb_rating', sa.String(length=225), nullable=True),
+    sa.Column('pic', sa.String(length=225), nullable=True),
+    sa.Column('rawg_id', sa.Integer(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('id')

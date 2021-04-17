@@ -7,23 +7,18 @@ import loginForm from '../src/components/LoginForm'
 import Form from './components/Form'
 import GameBlog from './components/GameBlog'
 import EditForm from './components/EditForm';
-
+import Top from './components/Top'
 
 const App = () => {
 
   return (
     <div className="App">
-      <nav>
-        <ul>
-          <NavLink to='/'>
-            <li>Home</li>
-          </NavLink>
-          <NavLink to='/loginForm'>
-            <li>Login</li>
-          </NavLink>
-          <li>Sign up</li>
-        </ul>
-      </nav>
+        <div style={{display: 'flex', justifyContent: 'space-around'}}>
+          <NavLink to='/'>Home</NavLink>
+          <NavLink to='/loginForm'>Login</NavLink>
+          <NavLink to='/blogs/all'>Top Game Blog Posts</NavLink>
+          {/* <NavLink>Sign up</NavLink> */}
+        </div>
       <h1>Welcome To GameStatus</h1>
       <Form/>
       <Switch>
@@ -31,7 +26,8 @@ const App = () => {
         <Route exact path="/:id" component={GameDetails}/>
         <Route exact path='/login' component={loginForm}/>
         <Route exact path='/games/:id' component={GameBlog}></Route>
-        <Route exaxt path='/posts/edit/:id' component={EditForm}/>
+        <Route exact path='/posts/edit/:id' component={EditForm}/>
+        <Route exact path='/blogs/all' component={Top}/>
       </Switch>
     </div>
   );

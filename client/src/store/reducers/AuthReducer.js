@@ -1,8 +1,10 @@
 const {SET_AUTHENTICATED, SET_CURRENT_USER, SET_SELECTED_USER}= require('../types')
 
 const iState = {
+    name:'',
+    email:'' ,
     authenticated: false,
-    currentUser:[],
+    currentUser: null,
     selectedUser:[]
 }
 
@@ -14,6 +16,8 @@ const UserReducer = (state =iState, action) => {
         return{...state, currentUser: action.payload}
     case SET_SELECTED_USER:
         return{...state, selectedUser: action.payload}
+    default:
+        return state
     }
 }
 

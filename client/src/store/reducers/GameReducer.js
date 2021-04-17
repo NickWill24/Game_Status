@@ -1,10 +1,11 @@
-const {GET_ONE_GAME, GET_GAMES , SEARCH_GAME, CREATE_GAME, GET_GAME_BLOG}= require('../types')
+const {GET_ONE_GAME, GET_GAMES , SEARCH_GAME, CREATE_GAME, GET_GAME_BLOG, GET_ALL_GAME_BLOGS}= require('../types')
 
 const iState = {
     details:{},
     results:[],
     newgame:{},
-    gameblog:{}
+    gameblog:{},
+    allBlogs:[]
 }
 
 const GameReducer = (state = iState, action) => {
@@ -19,6 +20,8 @@ const GameReducer = (state = iState, action) => {
         return{...state, newgame: action.payload}
     case GET_GAME_BLOG:
         return{...state, gameblog: action.payload}
+    case GET_ALL_GAME_BLOGS:
+        return{...state, allBlogs: action.payload}
     default:
         return {...state}
     }

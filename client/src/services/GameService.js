@@ -7,7 +7,7 @@ export const __CreateGame = async (formValues) => {
         throw error
     }
 }
-export const GetGames = async () => {
+export const __GetAllGameBlogs = async () => {
     try {
         const res = await Client.get('/games')
         return res.data

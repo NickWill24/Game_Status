@@ -1,6 +1,6 @@
 import { GetGames, GetGame, __SearchGames } from '../../services/rawgservices'
-import { __CreateGame, __GetGameBlog  } from '../../services/GameService'
-import { GET_GAMES, GET_ONE_GAME, SEARCH_GAME, CREATE_GAME, GET_GAME_BLOG } from '../types'
+import { __CreateGame, __GetGameBlog, __GetAllGameBlogs  } from '../../services/GameService'
+import { GET_GAMES, GET_ONE_GAME, SEARCH_GAME, CREATE_GAME, GET_GAME_BLOG, GET_ALL_GAME_BLOGS } from '../types'
 //get list of games from api
 export const getGames = () => async (dispatch) => {
     try {
@@ -51,7 +51,7 @@ export const createGame = (formvalues) => async (dispatch) =>{
         throw error
     }
 }
-//get Game from Backend 
+//get Game from Backend and details from rawg api
 export const getGameBlog = (id) => async (dispatch) =>{
     try {
         const gameBlog = await __GetGameBlog(id)
@@ -59,8 +59,27 @@ export const getGameBlog = (id) => async (dispatch) =>{
             type: GET_GAME_BLOG, 
             payload: gameBlog
         })
+        const details = await GetGame(gameBlog.rawg_id)
+        dispatch({
+            type: GET_ONE_GAME,
+            payload: details
+        })
         console.log(gameBlog)
         return gameBlog
+    } catch (error) {
+        throw error
+    }
+}
+
+export const getAllGameBlogs = () => async (dispatch) =>{
+    try {
+        const gameBlogs = await __GetAllGameBlogs()
+        dispatch({
+            type: GET_ALL_GAME_BLOGS, 
+            payload: gameBlogs
+        })
+        console.log(gameBlogs)
+        return gameBlogs
     } catch (error) {
         throw error
     }

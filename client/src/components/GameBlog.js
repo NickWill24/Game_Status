@@ -57,6 +57,13 @@ const GameBlog = (props) => {
     return (
     <div>
         <h1>Game Blog</h1>
+        {props.gameState.details ? 
+            <div>
+                <h2>{props.gameState.details.name}</h2>
+                <img style={{width: '50%'}} src={props.gameState.details.background_image}></img>
+            </div>
+        : null}
+            <h1>Comments</h1>
             <input
             type='text'
             name="post"

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { getGame, createGame } from '../store/actions/GameAction'
 
@@ -17,6 +17,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const GameDetails = (props) => {
     let test = ''
+    const[toggle, setToggle]= useState(false)
     const handleDelay= async () =>{
         if (props.gameState.details.length){
             test = props.gameState.details.genres[0].name
@@ -31,13 +32,15 @@ const GameDetails = (props) => {
             rating: parseInt(props.gameState.details.rating),
             category: test,
             esrb_rating: 'test',
-            rawg_id: props.match.params.id
+            rawg_id: props.match.params.id,
+            pic: props.gameState.details.background_image,
         }
         try {
             await props.makeGame(newGame)
         } catch (error) {
             throw error
         }
+        setToggle(true)
     }
     const startTalking = (e) =>{
         console.log(e.target.value)
@@ -59,11 +62,10 @@ const GameDetails = (props) => {
             <p>{props.gameState.details.description_raw}</p>
             <p>{props.gameState.details.rating}</p>
             <img src={props.gameState.details.background_image}/>
-            <button className="talk-about-button" onClick={() => createGame()}>Talk About This Game?</button>
-                    {props.gameState.newgame.data ?
+                    {toggle ?
                         <button className="go-to" value={props.gameState.newgame.data.id} onClick={(e) => startTalking(e)}>Start Talking!</button>
                         :
-                        null
+                        <button className="talk-about-button" onClick={() => createGame()}>Talk About This Game?</button>
                     }
         </div>
         :
