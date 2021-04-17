@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const Details = (props) => {
+const GameDetails = (props) => {
     let test = ''
     const handleDelay= async () =>{
         if (props.gameState.details.length){
@@ -72,4 +72,4 @@ const Details = (props) => {
     </div>
     )
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Details)
+export default connect(mapStateToProps, mapDispatchToProps)(GameDetails)

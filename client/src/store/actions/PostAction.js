@@ -1,10 +1,10 @@
-import {CreatePost, UpdatePost, DeletePost, GetPost, GetPosts} from '../../services/PostService'
-import {UPDATE_POST, DELETE_POST, GET_POSTS, GET_POST, CREATE_POST} from '../types'
+import {__CreatePost, __UpdatePost, __DeletePost, __GetPost, __GetPosts} from '../../services/PostService'
+import {UPDATE_POST, DELETE_POST, GET_POSTS, GET_POST, CREATE_POST, HANDLE_POST} from '../types'
 
 
 export const getPosts = () => async (dispatch) => {
     try {
-    const posts = await GetPosts()
+    const posts = await __GetPosts()
     dispatch({
         type: GET_POSTS,
         payload: posts
@@ -12,9 +12,16 @@ export const getPosts = () => async (dispatch) => {
     } catch (error) {}
 }
 
+export const handlePost = (formvalue) => async (dispatch) =>{
+    dispatch({
+        type: HANDLE_POST,
+        payload: formvalue
+    })
+}
+
 export const getPost = (id) => async (dispatch) => {
     try {
-    const posts = await GetPost(id)
+    const posts = await __GetPost(id)
     dispatch({
         type: GET_POST,
         payload: posts
@@ -24,7 +31,7 @@ export const getPost = (id) => async (dispatch) => {
 
 export const createPost = (formvalues) => async (dispatch) =>{
     try {
-        const newPost = await CreatePost(formvalues)
+        const newPost = await __CreatePost(formvalues)
         dispatch({
             type: CREATE_POST, 
             payload: newPost
@@ -38,7 +45,7 @@ export const createPost = (formvalues) => async (dispatch) =>{
 
 export const deletePost = (id) => async (dispatch) => {
     try {
-    const post = await DeletePost(id)
+    const post = await __DeletePost(id)
     dispatch({
         type: DELETE_POST,
         payload: id
@@ -50,7 +57,7 @@ export const deletePost = (id) => async (dispatch) => {
 
 export const updatePost = (id) => async (dispatch) => {
     try {
-    const post = await UpdatePost(id)
+    const post = await __UpdatePost(id)
     dispatch({
         type: UPDATE_POST,
         payload: id

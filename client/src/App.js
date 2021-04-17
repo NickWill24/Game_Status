@@ -29,7 +29,7 @@ const App = () => {
         <Route exact path='/' component={Game}/>
         <Route exact path="/:id" component={GameDetails}/>
         <Route exact path='/login' component={loginForm}/>
-        <Route exact path='/games/:id' component={GameBlog}/>
+        <Route exact path='/games/:id' component={GameBlog}></Route>
       </Switch>
     </div>
   );
