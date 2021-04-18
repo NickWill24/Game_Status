@@ -61,7 +61,7 @@ const GameDetails = (props) => {
             <p>{props.gameState.details.name}</p>
             <p>{props.gameState.details.description_raw}</p>
             <p>{props.gameState.details.rating}</p>
-            <img src={props.gameState.details.background_image}/>
+            <img style={{width: '50%'}} src={props.gameState.details.background_image}/>
                     {toggle ?
                         <button className="go-to" value={props.gameState.newgame.data.id} onClick={(e) => startTalking(e)}>Start Talking!</button>
                         :

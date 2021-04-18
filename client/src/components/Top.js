@@ -22,14 +22,16 @@ const Top = (props) => {
     return (
     <div>
         <h1>Games People are Talking About</h1>
+        <div style={{width: '100%', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center'}} >
         {props.gameState.allBlogs ? 
         props.gameState.allBlogs.map((blog, index)=>(
-            <Link key={index} to={`/games/${blog.id}`}>
-                <img src={blog.pic} style={{ width: '50%'}}/>
+            <Link style={{WebkitBoxShadow: '0px 5px 10px 0px rgba(0,0,0,0.5)',background: 'black', width: '300px', height: '200px', margin: '10px', color: 'white', padding: '10px', borderRadius:'10px'}} key={index} to={`/games/${blog.id}`}>
+                <img style={{borderRadius: '10px' ,width: '100%', maxHeight:'165px', overflow: 'hidden'}}  src={blog.pic}/>
                 <h4>{blog.name}</h4>
             </Link>
         ))
         : null}
+        </div>
     </div>
     )
 }

@@ -20,7 +20,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const GameBlog = (props) => {
-    // console.log(props.authState.currentUser)
     const handleChange= (e) =>{
         props.handleInput(e.target.value)
     }
@@ -56,10 +55,9 @@ const GameBlog = (props) => {
 
     return (
     <div>
-        <h1>Game Blog</h1>
         {props.gameState.details ? 
             <div>
-                <h2>{props.gameState.details.name}</h2>
+                <h1>{props.gameState.details.name}</h1>
                 <img style={{width: '50%'}} src={props.gameState.details.background_image}></img>
             </div>
         : null}
@@ -73,9 +71,9 @@ const GameBlog = (props) => {
             />
             <button onClick={()=>{handleSubmit()}}>Post</button>
             {props.gameState.gameblog.posts ?
-            <div>
+            <div style={{display: 'flex', flexDirection: 'column', width: '100%', justifyContent: 'center', alignItems: 'center'}}>
                 {props.gameState.gameblog.posts.map((post, index) =>(
-                    <div key={index}>
+                    <div style={{background: 'black', color: 'white', width: '400px', margin: '10px'}} key={index}>
                         <p>{post.user_name}</p>
                         <p>{post.comments}</p>
                         {props.AuthState.currentUser.name === post.user_name ? 

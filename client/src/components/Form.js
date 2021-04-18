@@ -21,11 +21,12 @@ const Form = (props) => {
     props.search(searchWord)
   }
   return (
-    <form className="search" onSubmit={handleSubmit}>
+    <form  style={{ width:'100%', marginTop: '20px'}}className="search" onSubmit={handleSubmit}>
       <input
         className="searchBar"
         type="text"
         autoComplete="off"
+        placeholder='Search Game'
         name="search"
         value={searchWord}
         onChange={handleChange}

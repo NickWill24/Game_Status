@@ -35,10 +35,9 @@ useEffect(()=>{
   let token = localStorage.getItem('token')
   props.checkSession(token)
 },[])
-
   return (
     <div className="App">
-        <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
+        <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center', color: 'white', backgroundImage: 'linear-gradient(315deg, #000000 0%, #414141 74%)'}}>
           {props.AuthState.authenticated ?
           <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center', width: '100vw'}}>
             {props.AuthState.currentUser === ''? 
@@ -55,8 +54,8 @@ useEffect(()=>{
             <NavLink to='/auth/signupform'> Sign Up</NavLink>
           </div>}
         </div>
-      <h1>Welcome To GameStatus</h1>
-      <Form/>
+      {/* <h1>Welcome To GameStatus</h1> */}
+            <Form/>
       <Switch>
         <Route exact path='/' component={Game}/>
         <Route exact path="/:id" component={GameDetails}/>
