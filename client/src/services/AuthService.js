@@ -32,4 +32,3 @@ export const __CheckSession= async (token) => {
         throw error
     }
 }
-

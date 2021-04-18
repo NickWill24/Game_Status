@@ -9,7 +9,7 @@ import GameBlog from './components/GameBlog'
 import EditForm from './components/EditForm';
 import Top from './components/Top'
 import SignupForm from './components/SignupForm';
-import { userSession } from './store/actions/AuthAction'
+import { userSession ,logOut } from './store/actions/AuthAction'
 import { connect } from 'react-redux'
 
 const mapStateToProps = ({AuthState}) => {
@@ -19,11 +19,18 @@ const mapStateToProps = ({AuthState}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    checkSession: (token) => dispatch(userSession(token))
+    checkSession: (token) => dispatch(userSession(token)),
+    logout: () => dispatch(logOut())
   }
 }
 
 const App = (props) => {
+  console.log(props.AuthState.currentUser)
+  const logOutUser= (e) =>{
+    e.preventDefault()
+    localStorage.removeItem('token')
+    props.logout()
+  }
 useEffect(()=>{
   let token = localStorage.getItem('token')
   props.checkSession(token)
@@ -31,12 +38,22 @@ useEffect(()=>{
 
   return (
     <div className="App">
-        <div style={{display: 'flex', justifyContent: 'space-around'}}>
-          <NavLink to='/'>Home</NavLink>
-          <NavLink to='/auth/loginform'>Login</NavLink>
-          <NavLink to='/blogs/all'>Top Game Blog Posts</NavLink>
-          <NavLink to='/auth/signupform'> Sign UP</NavLink>
-          {/* <NavLink>Sign up</NavLink> */}
+        <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center'}}>
+          {props.AuthState.authenticated ?
+          <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center', width: '100vw'}}>
+            {props.AuthState.currentUser === ''? 
+            null
+            
+            : <p>Hello {props.AuthState.currentUser.name}</p>}
+            <NavLink to='/'>Home</NavLink>
+            <NavLink to='/blogs/all'>Top Game Blog Posts</NavLink>
+            <NavLink to='/'><p onClick={(e)=>logOutUser(e)}>LogOut</p></NavLink>
+          </div>
+          : 
+          <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center', width: '100vw'}}>
+            <NavLink to='/auth/loginform'>Login</NavLink>
+            <NavLink to='/auth/signupform'> Sign Up</NavLink>
+          </div>}
         </div>
       <h1>Welcome To GameStatus</h1>
       <Form/>

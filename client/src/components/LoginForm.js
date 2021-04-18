@@ -19,18 +19,24 @@ const LoginForm = (props) => {
     const handleChange=(event) => {
         props.createLogin(event.target.name, event.target.value)
     }
-    const handleSubmit =(e) =>{
+    const handleSubmit = async (e)  =>{
         e.preventDefault()
-        let form= { 
-            email: props.AuthState.email,
-            password: props.AuthState.password
+        try {
+            let form= { 
+                email: props.AuthState.email,
+                password: props.AuthState.password
+            }
+            await props.signIn(form)
+            
+        } catch (error) {
+            throw error
         }
-        props.signIn(form)
+        props.history.push('/')
     }
     return (
     <div>
         <h1>Sign In</h1>
-        <form onSubmit={handleSubmit}>
+        <form>
             <input
             type='text'
             name='email'
@@ -45,8 +51,8 @@ const LoginForm = (props) => {
             value={props.AuthState.password}
             onChange={handleChange}
             />
-            <button type='submit'>Login</button>
         </form>
+        <button onClick={(e)=>handleSubmit(e)}>Login</button>
     </div>
     )
 }

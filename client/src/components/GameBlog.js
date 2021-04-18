@@ -4,8 +4,9 @@ import { getGameBlog } from '../store/actions/GameAction'
 import { createPost, deletePost, handlePost } from '../store/actions/PostAction'
 
 
-const mapStateToProps = ({ gameState, postState }) => {
-    return {gameState,postState}
+
+const mapStateToProps = ({ gameState, postState, AuthState }) => {
+    return {gameState,postState, AuthState}
 }
 
 
@@ -19,17 +20,16 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const GameBlog = (props) => {
-//update when auth works 
-    let testUser = 'Mike'
-    console.log(props.gameState.gameblog)
+    // console.log(props.authState.currentUser)
     const handleChange= (e) =>{
         props.handleInput(e.target.value)
     }
     const handleSubmit = async () =>{
+        console.log(props.AuthState)
         let myPost= {
             comments:props.postState.comment,
             game_id:props.match.params.id,
-            user_name: testUser
+            user_name: props.AuthState.currentUser.name
         }
         await props.makePost(myPost)
         await props.fetchGameBlog(props.match.params.id)
@@ -78,8 +78,12 @@ const GameBlog = (props) => {
                     <div key={index}>
                         <p>{post.user_name}</p>
                         <p>{post.comments}</p>
-                        <button onClick={()=>handleDelete(post.id)}>X</button>
-                        <button onClick={()=>handleEdit(post.id)}>Edit</button>
+                        {props.AuthState.currentUser.name === post.user_name ? 
+                        <div>
+                            <button onClick={()=>handleDelete(post.id)}>X</button>
+                            <button onClick={()=>handleEdit(post.id)}>Edit</button>
+                        </div>
+                        : null}
                     </div>
                 ))}
                 </div> : null}

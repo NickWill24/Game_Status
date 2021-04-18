@@ -17,7 +17,7 @@ export const SIGNUP_FORM='SIGNUP_FORM'
 export const SIGNUP_SUBMIT= 'SIGNUP_SUBMIT'
 
 export const LOGIN_FORM='LOGIN_FORM'
-// export const RESET_LOGIN='RESET_FORM'
+export const LOGOUT='LOGOUT'
 
 export const SEARCH_GAME="SEARCH_GAME"
 export const CREATE_GAME='CREATE_GAME'

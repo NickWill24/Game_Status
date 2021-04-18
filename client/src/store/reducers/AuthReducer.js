@@ -1,11 +1,11 @@
-const {SET_AUTHENTICATED, SET_CURRENT_USER, SET_SELECTED_USER, SIGNUP_FORM, SIGNUP_SUBMIT, LOGIN_FORM, CHECK_SESSION}= require('../types')
+const {SET_AUTHENTICATED, SET_CURRENT_USER, SET_SELECTED_USER, SIGNUP_FORM, SIGNUP_SUBMIT, LOGIN_FORM, CHECK_SESSION, LOGOUT}= require('../types')
 
 const iState = {
     name:'',
     email:'' ,
     password:'',
     authenticated: false,
-    currentUser: null,
+    currentUser:'',
     selectedUser:[],
     isSubmited: false
 }
@@ -26,8 +26,8 @@ const AuthReducer = (state =iState, action) => {
         return{...state, [action.payload.name]: action.payload.value}
     case CHECK_SESSION:
         return{...state, currentUser: action.payload, authenticated: true}
-    // case RESET_LOGIN:
-    //     return{...state, isSubmited: action.payload, currentUser: action.payload ,authenticated: action.payload, }
+    case LOGOUT:
+        return{...state, currentUser: action.payload, authenticated: false}
     default:
         return {...state}
     }
