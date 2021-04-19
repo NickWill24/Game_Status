@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import React, { useEffect } from 'react'
-import { addLoginForm, addRegisterForm, login, register } from '../store/actions/AuthAction'
+import React from 'react'
+import { addLoginForm, login } from '../store/actions/AuthAction'
 
 const mapStateToProps = ({AuthState}) => {
     return  {AuthState}
@@ -15,7 +15,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const LoginForm = (props) => {
-    console.log(props.AuthState)
     const handleChange=(event) => {
         props.createLogin(event.target.name, event.target.value)
     }

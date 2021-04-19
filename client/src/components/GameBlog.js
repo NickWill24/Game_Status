@@ -24,7 +24,6 @@ const GameBlog = (props) => {
         props.handleInput(e.target.value)
     }
     const handleSubmit = async () =>{
-        console.log(props.AuthState)
         let myPost= {
             comments:props.postState.comment,
             game_id:props.match.params.id,
@@ -35,7 +34,6 @@ const GameBlog = (props) => {
         props.handleInput('')
     }
     const handleDelete = async (id) =>{
-        console.log('Here', id)
         try {
             await props.removePost(id)
             await props.fetchGameBlog(props.match.params.id)
@@ -44,7 +42,6 @@ const GameBlog = (props) => {
         }
     }
     const handleEdit = (id) =>{
-        console.log(id)
         props.history.push(`/posts/edit/${id}`)
     }
 

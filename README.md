@@ -19,6 +19,15 @@ Owner
 Gamestatus is a flask, redux, and react full stack application. The purpose is to give user the ablity to post comment on 
 their favortie game, or their worst game.  
 
+***
+#### ***Getting Started***
+[Trello](https://trello.com/b/zpabiA2i/gamestatus) |
+[Deployment]()
+
+***
+#### ***Final Product*** 
+![import](images/Homepage.png)
+![import](images/Detailspage.png)
 
 ***
 ### ***Technologies***
@@ -30,10 +39,12 @@ their favortie game, or their worst game.
 
 ***
 ### ***Future Updates***
-* TBD
+* [ ] Add a User Profile 
+* [ ] Add a More game to the site
+* [ ] Add a way to talk to other user 
 
 
 *** 
 ### ***Credit***
 
-* TBD
+* [Rawg Site API](https://rawg.io/apidocs)

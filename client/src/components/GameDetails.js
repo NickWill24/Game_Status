@@ -23,7 +23,7 @@ const GameDetails = (props) => {
             test = props.gameState.details.genres[0].name
             return test
         } else {
-            console.log('waiting')
+            return('waiting')
         }
     }
     const createGame = async () =>{

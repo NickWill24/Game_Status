@@ -9,13 +9,23 @@ from resources.auth import Login, Register
 from resources.post import Posts, SinglePost, PostGame
 from resources.game import Games, SingleGame , GamePosts
 from flask_cors import CORS
+import os
 app = Flask(__name__)
 cors = CORS(app)
 api = Api(app)
 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://localhost:5432/game_status"
-app.config['SQLALCHEMY_ECHO'] = True
+DATABASE_URL = os.getenv('DATABASE_URL')
+if DATABASE_URL:
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL.replace(
+        "://", "ql://", 1)
+    app.config['SQLALCHEMY_ECHO'] = False
+    app.env = 'production
+else:
+    app.debug = True
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost:5432/game_status'
+    app.config['SQLALCHEMY_ECHO'] = True
 
 
 db.init_app(app)
@@ -33,4 +43,4 @@ api.add_resource(SingleGame, '/games/<int:id>')
 api.add_resource(GamePosts, '/games/post/<int:id>')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()

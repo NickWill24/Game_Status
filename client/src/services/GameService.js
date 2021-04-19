@@ -18,7 +18,6 @@ export const __GetAllGameBlogs = async () => {
 export const __GetGameBlog = async (id) => {
     try {
         const res = await Client.get(`/games/post/${id}`)
-        console.log(res.data)
         return res.data
     } catch (error) {
         throw error

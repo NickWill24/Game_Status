@@ -12,7 +12,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 const EditForm = (props) => {
-    console.log('FORM', props.gameState.gameblog.id)
     const thisPost = props.postState.currentPost.data
     const handleChange = (event) => {
         props.handleInput(event.target.value)
@@ -29,7 +28,6 @@ const EditForm = (props) => {
         }
         props.handleInput('')
         props.history.push(`/games/${props.gameState.gameblog.id}`)
-        console.log('test')
     }
     React.useEffect(() => {
         props.getThisPost(props.match.params.id)

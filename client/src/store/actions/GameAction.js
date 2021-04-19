@@ -45,7 +45,6 @@ export const createGame = (formvalues) => async (dispatch) =>{
             type: CREATE_GAME, 
             payload: newGame
         })
-        console.log(newGame)
         return newGame
     } catch (error) {
         throw error
@@ -64,7 +63,6 @@ export const getGameBlog = (id) => async (dispatch) =>{
             type: GET_ONE_GAME,
             payload: details
         })
-        console.log(gameBlog)
         return gameBlog
     } catch (error) {
         throw error
@@ -78,7 +76,6 @@ export const getAllGameBlogs = () => async (dispatch) =>{
             type: GET_ALL_GAME_BLOGS, 
             payload: gameBlogs
         })
-        console.log(gameBlogs)
         return gameBlogs
     } catch (error) {
         throw error

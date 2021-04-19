@@ -18,7 +18,6 @@ const Top = (props) => {
     useEffect(() => {
         props.fetchAllGameBlogs()
     }, [])
-    console.log(props.gameState.allBlogs)
     return (
     <div>
         <h1>Games People are Talking About</h1>

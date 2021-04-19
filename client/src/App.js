@@ -25,7 +25,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const App = (props) => {
-  console.log(props.AuthState.currentUser)
   const logOutUser= (e) =>{
     e.preventDefault()
     localStorage.removeItem('token')
@@ -50,11 +49,11 @@ useEffect(()=>{
           </div>
           : 
           <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'center', width: '100vw'}}>
+            <NavLink to='/'>Home</NavLink>
             <NavLink to='/auth/loginform'>Login</NavLink>
             <NavLink to='/auth/signupform'> Sign Up</NavLink>
           </div>}
         </div>
-      {/* <h1>Welcome To GameStatus</h1> */}
             <Form/>
       <Switch>
         <Route exact path='/' component={Game}/>
